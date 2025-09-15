@@ -38,7 +38,7 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-navy text-navy-foreground">
+    <footer id="footer" className="bg-navy text-navy-foreground">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Newsletter Section */}
         <div className="py-16 border-b border-navy-light">
@@ -83,15 +83,15 @@ export const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-4 w-4 text-secondary" />
-                  <span className="text-sm">contact@pcsdigital.com</span>
+                  <span className="text-sm">contact@pcsdigitaltech.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-4 w-4 text-secondary" />
-                  <span className="text-sm">+1 (555) 123-4567</span>
+                  <span className="text-sm">+91 8328627323</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-4 w-4 text-secondary" />
-                  <span className="text-sm">123 Business Ave, Tech City, TC 12345</span>
+                  <span className="text-sm">4/19 , 2nd Floor , 20th Main Road , Maruthi Nagar Main Rd , Chikka Madivala , BTM 1st Stage , Bengaluru , Karnataka 560068</span>
                 </div>
               </div>
               

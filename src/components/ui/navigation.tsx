@@ -2,25 +2,45 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import pcsLogo from "@/assets/PCS-Digital-Logo.png";
 
 const navigation = [
   { name: "Home", href: "#" },
   { name: "About Us", href: "#about" },
   { name: "Services", href: "#services" },
   { name: "SAP Solutions", href: "#sap" },
-  { name: "Industries", href: "#industries" },
-  { name: "Contact", href: "#contact" },
+  { name: "Industries", href: "#footer" },
+  { name: "Contact", href: "#footer" },
 ];
 
 export const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#') && href !== '#') {
+      e.preventDefault();
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between py-2 px-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-heading font-bold gradient-text">PCS Digital</span>
+            {/* PCS Digital Logo - Desktop */}
+            <img 
+              src={pcsLogo} 
+              alt="PCS Digital - Fueling Your Digital Journey" 
+              className="h-14 w-auto"
+            />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -39,6 +59,7 @@ export const Navigation = () => {
             <a
               key={item.name}
               href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
               {item.name}
@@ -60,7 +81,12 @@ export const Navigation = () => {
         <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-xl font-heading font-bold gradient-text">PCS Digital</span>
+              {/* PCS Digital Logo - Mobile */}
+              <img 
+                src={pcsLogo} 
+                alt="PCS Digital - Fueling Your Digital Journey" 
+                className="h-12 w-auto"
+              />
             </a>
             <Button
               variant="ghost"
@@ -79,7 +105,7 @@ export const Navigation = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
                   >
                     {item.name}
